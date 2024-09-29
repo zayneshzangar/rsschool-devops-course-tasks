@@ -42,17 +42,17 @@ jobs:
 
     - name: Terraform Init
       run: terraform init
-      working-directory: test-resources
+      working-directory: task-1/test-resources
 
     - name: Terraform Format
       run: terraform fmt -check
-      working-directory: test-resources
+      working-directory: task-1/test-resources
 
     - name: Terraform Plan
       run: terraform plan -input=false
-      working-directory: test-resources
+      working-directory: task-1/test-resources
 
     - name: Terraform Apply
       if: (github.ref == 'refs/heads/task_1' || github.ref == 'refs/heads/main') && github.event_name == 'push'
       run: terraform apply -auto-approve -input=false
-      working-directory: test-resources
+      working-directory: task-1/test-resources
