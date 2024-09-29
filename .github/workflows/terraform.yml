@@ -53,6 +53,6 @@ jobs:
       working-directory: test-resources
 
     - name: Terraform Apply
-      if: github.ref == 'refs/heads/task_1' && github.event_name == 'push'
+      if: (github.ref == 'refs/heads/task_1' || github.ref == 'refs/heads/main') && github.event_name == 'push'
       run: terraform apply -auto-approve -input=false
       working-directory: test-resources
