@@ -25,6 +25,12 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
 
+    - name: Cache Terraform Directory
+      uses: actions/cache@v3
+      with:
+        path: task-1/test-resources
+        key: ${{ runner.os }}-terraform-${{ hashFiles('task-1/test-resources/**') }}
+
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v3
 
@@ -36,7 +42,6 @@ jobs:
       run: terraform fmt
       working-directory: task-1/test-resources
 
-
   terraform-plan:
     name: 'Terraform plan'
     runs-on: ubuntu-latest
@@ -45,6 +50,12 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v4
+
+    - name: Cache Terraform Directory
+      uses: actions/cache@v3
+      with:
+        path: task-1/test-resources
+        key: ${{ runner.os }}-terraform-${{ hashFiles('task-1/test-resources/**') }}
 
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v3
@@ -64,7 +75,6 @@ jobs:
       run: terraform plan -input=false
       working-directory: task-1/test-resources
 
-
   terraform-apply:
     name: 'Terraform apply'
     runs-on: ubuntu-latest
@@ -73,6 +83,12 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
+
+    - name: Cache Terraform Directory
+      uses: actions/cache@v3
+      with:
+        path: task-1/test-resources
+        key: ${{ runner.os }}-terraform-${{ hashFiles('task-1/test-resources/**') }}
 
     - name: Set AWS credentials
       uses: aws-actions/configure-aws-credentials@v4
