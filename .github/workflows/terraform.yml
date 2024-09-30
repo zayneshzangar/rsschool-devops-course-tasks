@@ -21,19 +21,16 @@ jobs:
   terraform-check:
     name: 'Terraform check'
     runs-on: ubuntu-latest
-    environment: production
 
     steps:
     - name: Terraform Format
-      run: terraform fmt -check
+      run: terraform fmt
       working-directory: task-1/test-resources
-
 
 
   terraform-plan:
     name: 'Terraform plan'
     runs-on: ubuntu-latest
-    environment: production
     needs: terraform-check
     steps:
     - name: Checkout
@@ -57,10 +54,10 @@ jobs:
       run: terraform plan -input=false
       working-directory: task-1/test-resources
 
+      
   terraform-apply:
     name: 'Terraform apply'
     runs-on: ubuntu-latest
-    environment: production
     needs: terraform-plan
     steps:
     - name: Checkout code
