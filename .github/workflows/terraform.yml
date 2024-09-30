@@ -14,9 +14,12 @@ permissions:
   id-token: write
   contents: read
 
+env:
+  AWS_ACC_ID: ${{ secrets.AWS_ACC_ID }}
+
 jobs:
-  terraform:
-    name: 'Terraform'
+  terraform-check:
+    name: 'Terraform check'
     runs-on: ubuntu-latest
     environment: production
 
@@ -25,18 +28,28 @@ jobs:
         shell: bash
 
     steps:
+    - name: Terraform Format
+      run: terraform fmt -check
+      working-directory: task-1/test-resources
+
+
+
+  terraform-plan:
+    name: 'Terraform plan'
+    runs-on: ubuntu-latest
+    environment: production
+    needs: terraform-check
+    steps:
     - name: Checkout
       uses: actions/checkout@v4
 
     - name: Setup Terraform
-      uses: hashicorp/setup-terraform@v1
-      with:
-        cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
+      uses: hashicorp/setup-terraform@v3
 
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v4
       with:
-        role-to-assume: arn:aws:iam::623043548856:role/GithubActionsRole
+        role-to-assume: arn:aws:iam::${{ env.AWS_ACC_ID }}:role/GithubActionsRole
         role-session-name: GithubActionsRole
         aws-region: ap-southeast-1
 
@@ -44,13 +57,31 @@ jobs:
       run: terraform init
       working-directory: task-1/test-resources
 
-    - name: Terraform Format
-      run: terraform fmt -check
-      working-directory: task-1/test-resources
-
-    - name: Terraform Plan
+    - name: Terraform Planning
       run: terraform plan -input=false
       working-directory: task-1/test-resources
+
+  terraform-apply:
+    name: 'Terraform apply'
+    runs-on: ubuntu-latest
+    environment: production
+    needs: terraform-plan
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set AWS credentials
+      uses: aws-actions/configure-aws-credentials@v4
+      with:
+        audience: sts.amazonaws.com
+        aws-region: ap-southeast-1
+        role-to-assume: arn:aws:iam::${{ env.AWS_ACC_ID }}:role/GithubActionsRole
+
+    - name: Set up Terraform
+      uses: hashicorp/setup-terraform@v3
+
+    - name: Terraform init
+      run: terraform init
 
     - name: Terraform Apply
       if: (github.ref == 'refs/heads/task_1' || github.ref == 'refs/heads/main') && github.event_name == 'push'
