@@ -28,7 +28,7 @@ jobs:
 
     - name: Terraform Format
       run: terraform fmt
-      working-directory: task-1/test-resources/
+      working-directory: test-resources
 
 
   terraform-plan:
