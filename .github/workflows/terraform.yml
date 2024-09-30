@@ -24,7 +24,7 @@ jobs:
 
     steps:
     - name: List directory contents
-      run: ls -R && pwd
+      run: ls -Rla && pwd
 
     - name: Terraform Format
       run: terraform fmt
