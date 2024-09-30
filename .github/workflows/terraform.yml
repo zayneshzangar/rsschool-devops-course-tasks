@@ -28,10 +28,7 @@ jobs:
     - name: Cache Terraform Directory
       uses: actions/cache@v3
       with:
-        path: |
-          task-1/test-resources/.terraform
-          task-1/test-resources/terraform.tfstate
-          task-1/test-resources/terraform.tfstate.backup
+        path: task-1/test-resources
         key: ${{ runner.os }}-terraform-${{ hashFiles('task-1/test-resources/**') }}
         restore-keys: |
           ${{ runner.os }}-terraform-
@@ -67,10 +64,7 @@ jobs:
     - name: Cache Terraform Directory
       uses: actions/cache@v3
       with:
-        path: |
-          task-1/test-resources/.terraform
-          task-1/test-resources/terraform.tfstate
-          task-1/test-resources/terraform.tfstate.backup
+        path: task-1/test-resources
         key: ${{ runner.os }}-terraform-${{ hashFiles('task-1/test-resources/**') }}
         restore-keys: |
           ${{ runner.os }}-terraform-
@@ -105,10 +99,7 @@ jobs:
     - name: Cache Terraform Directory
       uses: actions/cache@v3
       with:
-        path: |
-          task-1/test-resources/.terraform
-          task-1/test-resources/terraform.tfstate
-          task-1/test-resources/terraform.tfstate.backup
+        path: task-1/test-resources
         key: ${{ runner.os }}-terraform-${{ hashFiles('task-1/test-resources/**') }}
         restore-keys: |
           ${{ runner.os }}-terraform-
