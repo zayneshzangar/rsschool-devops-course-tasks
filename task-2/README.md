@@ -17,11 +17,18 @@
 │   ├── security_group.tf
 │   └── variables.tf
 ├── key-pair
-│   ├── key-pair-plan.txt
-│   ├── key_pair.tf
+│   ├── key-pair.tf
 │   ├── provider.tf
 │   └── variables.tf
+├── plan-files
+│   ├── bastion-plan.txt
+│   ├── ec2-plan.txt
+│   ├── key-pair-plan.txt
+│   └── vpc-plan.txt
 ├── README.md
+├── screens
+│   ├── resource-map1.png
+│   └── resource-map2.png
 └── vpc
     ├── eip.tf
     ├── igw.tf
@@ -32,8 +39,8 @@
     ├── rt_association.tf
     ├── subnets.tf
     ├── variables.tf
-    ├── vpc-plan.txt
     └── vpc.tf
+
 ```
 
 ## Terraform VPC Infrastructure
@@ -73,18 +80,18 @@ Here's the breakdown of resource files:
 
 ### Example of how the resources are divided:
 ```
-├── vpc
-│   ├── eip.tf                # Elastic IPs for NAT Gateway
-│   ├── igw.tf                # Internet Gateway configuration
-│   ├── nat_gw.tf             # NAT Gateway for private subnets
-│   ├── provider.tf           # AWS provider configuration
-│   ├── route_table.tf        # Route table configurations
-│   ├── route.tf              # Routing rules for subnets and NAT
-│   ├── rt_association.tf     # Route table associations with subnets
-│   ├── subnets.tf            # Public and private subnets
-│   ├── variables.tf          # Variables to customize the VPC and subnets
-│   ├── vpc-plan.txt          # Terraform plan for the infrastructure
-│   └── vpc.tf                # VPC definition
+└── vpc
+    ├── eip.tf                # Elastic IPs for NAT Gateway
+    ├── igw.tf                # Internet Gateway configuration
+    ├── nat_gw.tf             # NAT Gateway for private subnets
+    ├── provider.tf           # AWS provider configuration
+    ├── route_table.tf        # Route table configurations
+    ├── route.tf              # Routing rules for subnets and NAT
+    ├── rt_association.tf     # Route table associations with subnets
+    ├── subnets.tf            # Public and private subnets
+    ├── variables.tf          # Variables to customize the VPC and subnets
+    ├── vpc-plan.txt          # Terraform plan for the infrastructure
+    └── vpc.tf                # VPC definition
 ```
 
 ### Key Resources:
@@ -149,4 +156,16 @@ The bastion code is located in the `bastion-host` folder
     - Instances in private subnets route outbound traffic through the NAT Instance.
     - Instances in public subnets have direct access to the internet.
 
+### A GitHub Actions (GHA) pipeline is set up for the Terraform code
+- You can check by going to the repository actions tab
 
+### EC2
+- I also created ec2 and checked the Internet connection and connected from my computer to these virtual machines. You can make sure by looking at the screenshots in the screens folder
+
+```
+NOTE! if you are going to raise the infrastructure, then you need to follow the workflow deployment procedure
+1. vpc
+2. key-pair
+3. bastion-host
+4. ec2
+```
