@@ -19,5 +19,7 @@ resource "aws_security_group" "ssh_sg" {
     cidr_blocks = var.vpc_cidr # Разрешение доступа только из VPC
   }
 
-  # Можно добавить дополнительные ingress-правила для доступа к сервисам внутри сети
+  tags = {
+    Name = "rsschool-zayneshzangar-ec2-sg"
+  }
 }
