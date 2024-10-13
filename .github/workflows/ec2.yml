@@ -1,7 +1,12 @@
 name: 'ec2'
 
 on:
-  workflow_dispatch:   # Триггер для ручного запуска
+    push:
+        branches:
+            - task_2
+    pull_request:
+        branches:
+            - task_2
 
 permissions:
   id-token: write

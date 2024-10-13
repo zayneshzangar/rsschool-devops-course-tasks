@@ -1,7 +1,12 @@
 name: 'key-pair'
 
 on:
-  workflow_dispatch:   # Триггер для ручного запуска
+    push:
+        branches:
+            - task_2
+    pull_request:
+        branches:
+            - task_2
 
 permissions:
   id-token: write
@@ -15,6 +20,7 @@ jobs:
   terraform-kp-check:
     name: 'Terraform check'
     runs-on: ubuntu-latest
+
 
     steps:
     - name: Checkout
