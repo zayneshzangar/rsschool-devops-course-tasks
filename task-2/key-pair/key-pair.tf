@@ -8,8 +8,7 @@ resource "aws_key_pair" "key_pair_rsschool" {
   public_key = tls_private_key.pk_key.public_key_openssh
 }
 
-#  public_key = file("task-2/key-pair/id_rsa.pub")
-# output "private_key" {
-#   value     = tls_private_key.my_key.private_key_pem
-#   sensitive = true
-# }
+output "private_key" {
+  value     = tls_private_key.my_key.private_key_pem
+  sensitive = true
+}

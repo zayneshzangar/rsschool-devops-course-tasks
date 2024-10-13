@@ -3,7 +3,7 @@ resource "aws_instance" "test_ec2_privateA" {
   instance_type          = var.ami_type
   vpc_security_group_ids = [aws_security_group.ssh_sg.id]
   subnet_id              = data.aws_subnet.subnet_private_rsschoolA.id
-  key_name               = "key-rsschool"
+  key_name               = "key-pair-rsschool"
   availability_zone      = var.vpc_azs[0]
 
   tags = {
@@ -16,7 +16,7 @@ resource "aws_instance" "test_ec2_privateB" {
   instance_type          = var.ami_type
   vpc_security_group_ids = [aws_security_group.ssh_sg.id]
   subnet_id              = data.aws_subnet.subnet_private_rsschoolB.id
-  key_name               = "key-rsschool"
+  key_name               = "key-pair-rsschool"
   availability_zone      = var.vpc_azs[1]
 
   tags = {

@@ -2,7 +2,7 @@ resource "aws_launch_template" "launch_template_bastion" {
   name = "bastion"
   image_id      = var.ami_id
   instance_type = "t2.micro"
-  key_name      = "key-rsschool"
+  key_name      = "key-pair-rsschool"
 
   block_device_mappings {
     device_name = "/dev/xvda"
