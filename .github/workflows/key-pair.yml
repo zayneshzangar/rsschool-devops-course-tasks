@@ -28,13 +28,13 @@ jobs:
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v3
 
-    - name: Cache Terraform Directory
+    - name: Cache Terraform Directory 2
       uses: actions/cache@v3
       with:
         path: task-2/key-pair
-        key: ${{ runner.os }}-kp-${{ hashFiles('task-2/key-pair/**') }}
+        key: ${{ runner.os }}-kp2-${{ hashFiles('task-2/key-pair/**') }}
         restore-keys: |
-          ${{ runner.os }}-kp-
+          ${{ runner.os }}-kp2-
 
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v4
@@ -60,13 +60,13 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
 
-    - name: Cache Terraform Directory
+    - name: Cache Terraform Directory 2
       uses: actions/cache@v3
       with:
         path: task-2/key-pair
-        key: ${{ runner.os }}-kp-${{ hashFiles('task-2/key-pair/**') }}
+        key: ${{ runner.os }}-kp2-${{ hashFiles('task-2/key-pair/**') }}
         restore-keys: |
-          ${{ runner.os }}-kp-
+          ${{ runner.os }}-kp2-
 
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v4
@@ -91,13 +91,13 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
 
-    - name: Cache Terraform Directory
+    - name: Cache Terraform Directory 2
       uses: actions/cache@v3
       with:
         path: task-2/key-pair
-        key: ${{ runner.os }}-kp-${{ hashFiles('task-2/key-pair/**') }}
+        key: ${{ runner.os }}-kp2-${{ hashFiles('task-2/key-pair/**') }}
         restore-keys: |
-          ${{ runner.os }}-kp-
+          ${{ runner.os }}-kp2-
 
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v4
