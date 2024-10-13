@@ -27,13 +27,13 @@ jobs:
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v3
 
-    - name: Cache Terraform Directory
+    - name: Cache Terraform Directory 2
       uses: actions/cache@v3
       with:
         path: task-2/bastion-host
-        key: ${{ runner.os }}-bastion-${{ hashFiles('task-2/bastion-host/**') }}
+        key: ${{ runner.os }}-bastion2-${{ hashFiles('task-2/bastion-host/**') }}
         restore-keys: |
-          ${{ runner.os }}-bastion-
+          ${{ runner.os }}-bastion2-
 
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v4
@@ -59,13 +59,13 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
 
-    - name: Cache Terraform Directory
+    - name: Cache Terraform Directory 2
       uses: actions/cache@v3
       with:
         path: task-2/bastion-host
-        key: ${{ runner.os }}-bastion-${{ hashFiles('task-2/bastion-host/**') }}
+        key: ${{ runner.os }}-bastion2-${{ hashFiles('task-2/bastion-host/**') }}
         restore-keys: |
-          ${{ runner.os }}-bastion-
+          ${{ runner.os }}-bastion2-
 
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v4
@@ -90,13 +90,13 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
 
-    - name: Cache Terraform Directory
+    - name: Cache Terraform Directory 2
       uses: actions/cache@v3
       with:
         path: task-2/bastion-host
-        key: ${{ runner.os }}-bastion-${{ hashFiles('task-2/bastion-host/**') }}
+        key: ${{ runner.os }}-bastion2-${{ hashFiles('task-2/bastion-host/**') }}
         restore-keys: |
-          ${{ runner.os }}-bastion-
+          ${{ runner.os }}-bastion2-
 
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v4
