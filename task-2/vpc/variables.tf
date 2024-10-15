@@ -32,3 +32,9 @@ variable "vpc_private_subnets" {
   type        = list(string)
   default     = ["10.0.21.0/24", "10.0.22.0/24"]
 }
+
+variable "billing" {
+  description = "Private subnets for VPC"
+  type        = string
+  default     = "0.039"
+}

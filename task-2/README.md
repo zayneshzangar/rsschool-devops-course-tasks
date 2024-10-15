@@ -32,6 +32,7 @@
 └── vpc
     ├── eip.tf
     ├── igw.tf
+    ├── nacl.tf
     ├── nat_gw.tf
     ├── provider.tf
     ├── route_table.tf
@@ -77,12 +78,14 @@ Here's the breakdown of resource files:
 - `route.tf`: Defines the routes to allow communication between subnets and internet access for public subnets.
 - `rt_association.tf`: Associates subnets with their respective route tables.
 - `eip.tf`: Allocates Elastic IPs for the NAT Gateway.
+- `nacl.tf`: Defines Network ACLs to control inbound and outbound traffic for subnets in the VPC.
 
 ### Example of how the resources are divided:
 ```
 └── vpc
     ├── eip.tf                # Elastic IPs for NAT Gateway
     ├── igw.tf                # Internet Gateway configuration
+    ├── nacl.tf               # Network Access Control List
     ├── nat_gw.tf             # NAT Gateway for private subnets
     ├── provider.tf           # AWS provider configuration
     ├── route_table.tf        # Route table configurations
