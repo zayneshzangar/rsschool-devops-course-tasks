@@ -42,7 +42,7 @@ resource "aws_instance" "bastion_k3s" {
   )
 
   tags = {
-    Name = "master"
+    Name = "bastion"
   }
 
 }
