@@ -9,6 +9,6 @@ resource "aws_key_pair" "key_pair_rsschool" {
 }
 
 output "private_key" {
-  value     = tls_private_key.my_key.private_key_pem
+  value     = tls_private_key.pk_key.private_key_pem
   sensitive = true
 }

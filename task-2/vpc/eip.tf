@@ -4,8 +4,8 @@ resource "aws_eip" "nat_eip_1" {
   }
 }
 
-resource "aws_eip" "nat_eip_2" {
-  tags = {
-    Name = "nat-eip-2"
-  }
-}
+# resource "aws_eip" "nat_eip_2" {
+#   tags = {
+#     Name = "nat-eip-2"
+#   }
+# }

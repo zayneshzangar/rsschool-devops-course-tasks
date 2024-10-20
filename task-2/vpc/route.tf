@@ -7,14 +7,14 @@ resource "aws_route" "public_igw_route" {
   }
 }
 
-resource "aws_route" "private_nat_route_a" {
-  route_table_id         = aws_route_table.rt_rsschool_private_a.id
+resource "aws_route" "private_nat_route" {
+  route_table_id         = aws_route_table.rt_rsschool_private.id
   destination_cidr_block = "0.0.0.0/0"
   nat_gateway_id         = aws_nat_gateway.nat_gw_1.id
 }
 
-resource "aws_route" "private_nat_route_b" {
-  route_table_id         = aws_route_table.rt_rsschool_private_b.id
-  destination_cidr_block = "0.0.0.0/0"
-  nat_gateway_id         = aws_nat_gateway.nat_gw_2.id
-}
+# resource "aws_route" "private_nat_route_b" {
+#   route_table_id         = aws_route_table.rt_rsschool_private_b.id
+#   destination_cidr_block = "0.0.0.0/0"
+#   nat_gateway_id         = aws_nat_gateway.nat_gw_2.id
+# }

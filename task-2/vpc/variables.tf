@@ -23,18 +23,12 @@ variable "vpc_azs" {
 
 variable "vpc_public_subnets" {
   description = "Public subnets for VPC"
-  type        = list(string)
-  default     = ["10.0.11.0/24", "10.0.12.0/24"]
+  type        = string
+  default     = "10.0.11.0/24" # , "10.0.12.0/24"
 }
 
 variable "vpc_private_subnets" {
   description = "Private subnets for VPC"
   type        = list(string)
   default     = ["10.0.21.0/24", "10.0.22.0/24"]
-}
-
-variable "billing" {
-  description = "Private subnets for VPC"
-  type        = string
-  default     = "0.039"
 }
