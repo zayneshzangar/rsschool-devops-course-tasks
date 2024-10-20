@@ -4,9 +4,6 @@ on:
     push:
         branches:
             - task_3.1
-    pull_request:
-        branches:
-        - task_3
 
 permissions:
   id-token: write
