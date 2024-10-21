@@ -31,9 +31,9 @@ jobs:
       uses: actions/cache@v3
       with:
         path: task-3/bastion-host
-        key: ${{ runner.os }}-bastion-host-${{ hashFiles('task-3/bastion-host/**') }}
+        key: ${{ runner.os }}-bastion-${{ hashFiles('task-3/bastion-host/**') }}
         restore-keys: |
-          ${{ runner.os }}-bastion-host-
+          ${{ runner.os }}-bastion-
 
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v4
@@ -63,9 +63,9 @@ jobs:
       uses: actions/cache@v3
       with:
         path: task-3/bastion-host
-        key: ${{ runner.os }}-bastion-host-${{ hashFiles('task-3/bastion-host/**') }}
+        key: ${{ runner.os }}-bastion-${{ hashFiles('task-3/bastion-host/**') }}
         restore-keys: |
-          ${{ runner.os }}-bastion-host-
+          ${{ runner.os }}-bastion-
 
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v4
@@ -78,7 +78,7 @@ jobs:
       working-directory: task-3/bastion-host
 
     - name: Terraform Planning
-      run: terraform plan -input=false 
+      run: terraform plan -input=false
       working-directory: task-3/bastion-host
 
   terraform-kp-apply:
@@ -94,9 +94,9 @@ jobs:
       uses: actions/cache@v3
       with:
         path: task-3/bastion-host
-        key: ${{ runner.os }}-bastion-host-${{ hashFiles('task-3/bastion-host/**') }}
+        key: ${{ runner.os }}-bastion-${{ hashFiles('task-3/bastion-host/**') }}
         restore-keys: |
-          ${{ runner.os }}-bastion-host-
+          ${{ runner.os }}-bastion-
 
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v4
