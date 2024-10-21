@@ -27,7 +27,7 @@ jobs:
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v3
 
-    - name: Cache Terraform Directory 2
+    - name: Cache Terraform Directory
       uses: actions/cache@v3
       with:
         path: task-3/bastion-host
@@ -59,7 +59,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
 
-    - name: Cache Terraform Directory 2
+    - name: Cache Terraform Directory
       uses: actions/cache@v3
       with:
         path: task-3/bastion-host
@@ -90,7 +90,7 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
 
-    - name: Cache Terraform Directory 2
+    - name: Cache Terraform Directory
       uses: actions/cache@v3
       with:
         path: task-3/bastion-host
