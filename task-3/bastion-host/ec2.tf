@@ -9,7 +9,7 @@ resource "aws_instance" "bastion_k3s" {
   # Закодировать user_data в Base64
   user_data = base64encode(<<-EOF
     #!/bin/bash
-    echo "${var.rsschool_key}" >> ~/.ssh/rsschool-key.pem
+    # echo "test" >> ~/.ssh/rsschool-key.pem
 
     chmod 400 ~/.ssh/rsschool.pem
 

@@ -10,10 +10,10 @@ resource "aws_instance" "master" {
     user_data = <<-EOF
         #!/bin/bash
 
-        echo "${var.rsschool_key}"
+        # echo "test"
 
         # Записываем ключ в файл
-        echo "${var.rsschool_key}" >> /home/ubuntu/.ssh/rsschool-key.pem
+        # echo "test" >> /home/ubuntu/.ssh/rsschool-key.pem
 
         # Устанавливаем правильные права на ключ
         chmod 400 /home/ubuntu/.ssh/rsschool-key.pem
@@ -47,7 +47,7 @@ resource "aws_instance" "worker" {
     #!/bin/bash
 
     # Записываем ключ в файл
-    echo "${var.rsschool_key}" >> /home/ubuntu/.ssh/rsschool-key.pem
+    # echo "test" >> /home/ubuntu/.ssh/rsschool-key.pem
 
     chmod 400 /home/ubuntu/.ssh/rsschool-key.pem
 
