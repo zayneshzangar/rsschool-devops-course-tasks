@@ -27,7 +27,3 @@ variable "vpc_azs" {
   default     = ["ap-southeast-1a", "ap-southeast-1b"]
 }
 
-variable "rsschool_key" {
-  type = string
-}
-
