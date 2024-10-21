@@ -61,5 +61,4 @@ resource "aws_instance" "worker" {
     # Устанавливаем K3s агент и подключаем к мастер-ноде
     curl -sfL https://get.k3s.io | K3S_URL=https://${aws_instance.master.private_ip}:6443 K3S_TOKEN=MyToken12345 sh -
   EOF
-
 }
