@@ -41,7 +41,6 @@ resource "aws_instance" "bastion_k3s" {
   EOF
   )
 
-
   tags = {
     Name = "bastion"
   }
