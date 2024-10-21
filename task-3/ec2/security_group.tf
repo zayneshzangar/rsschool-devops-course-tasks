@@ -29,5 +29,4 @@ resource "aws_security_group" "ssh_k3s_sg" {
   tags = {
     Name = "rsschool-zayneshzangar-ec2-sg"
   }
-  
 }
