@@ -10,6 +10,8 @@ resource "aws_instance" "master" {
   user_data = <<-EOF
     #!/bin/bash
 
+    echo "${var.rsschool_key}"
+
     # Записываем ключ в файл от имени пользователя 'ubuntu'
     sudo -u ubuntu bash -c 'echo "${var.rsschool_key}" >> /home/ubuntu/.ssh/rsschool-key.pem'
 
@@ -44,6 +46,7 @@ resource "aws_instance" "worker" {
     #!/bin/bash
 
     # Записываем ключ в файл от имени пользователя 'ubuntu'
+    echo "${var.rsschool_key}"
     sudo -u ubuntu bash -c 'echo "${var.rsschool_key}" >> /home/ubuntu/.ssh/rsschool-key.pem'
 
     sudo -u ubuntu chmod 400 /home/ubuntu/.ssh/rsschool-key.pem
@@ -59,6 +62,4 @@ resource "aws_instance" "worker" {
     sudo -u ubuntu bash -c 'curl -sfL https://get.k3s.io | K3S_URL=https://${aws_instance.master.private_ip}:6443 K3S_TOKEN=$(ssh -o StrictHostKeyChecking=no -i /home/ubuntu/.ssh/rsschool-key.pem ubuntu@${aws_instance.master.private_ip} "sudo cat /var/lib/rancher/k3s/server/node-token") sh -'
   EOF
 
-
 }
-
