@@ -41,22 +41,22 @@ resource "aws_instance" "worker" {
 
   # Подключение воркер-ноды к мастер-ноде
   user_data = <<-EOF
-      #!/bin/bash
+    #!/bin/bash
 
-      # Записываем ключ в файл от имени пользователя 'ubuntu'
-      sudo -u ubuntu bash -c 'echo "${var.rsschool_key}" >> /home/ubuntu/.ssh/rsschool-key.pem'
+    # Записываем ключ в файл от имени пользователя 'ubuntu'
+    sudo -u ubuntu bash -c 'echo "${var.rsschool_key}" >> /home/ubuntu/.ssh/rsschool-key.pem'
 
-      sudo -u ubuntu chmod 400 /home/ubuntu/.ssh/rsschool-key.pem
+    sudo -u ubuntu chmod 400 /home/ubuntu/.ssh/rsschool-key.pem
 
-      # Установка K3s как агент (воркер-нода)
+    # Установка K3s как агент (воркер-нода)
 
-      while ! nc -z ${aws_instance.master.private_ip} 6443; do
-        echo "Ожидание доступности мастер-ноды на ${aws_instance.master.private_ip}:6443..."
-        sleep 5
-      done
+    while ! nc -z ${aws_instance.master.private_ip} 6443; do
+      echo "Ожидание доступности мастер-ноды на ${aws_instance.master.private_ip}:6443..."
+      sleep 5
+    done
 
-      # Устанавливаем K3s агент и подключаем к мастер-ноде от имени пользователя 'ubuntu'
-      sudo -u ubuntu bash -c 'curl -sfL https://get.k3s.io | K3S_URL=https://${aws_instance.master.private_ip}:6443 K3S_TOKEN=$(ssh -o StrictHostKeyChecking=no -i /home/ubuntu/.ssh/rsschool-key.pem ubuntu@${aws_instance.master.private_ip} "sudo cat /var/lib/rancher/k3s/server/node-token") sh -'
+    # Устанавливаем K3s агент и подключаем к мастер-ноде от имени пользователя 'ubuntu'
+    sudo -u ubuntu bash -c 'curl -sfL https://get.k3s.io | K3S_URL=https://${aws_instance.master.private_ip}:6443 K3S_TOKEN=$(ssh -o StrictHostKeyChecking=no -i /home/ubuntu/.ssh/rsschool-key.pem ubuntu@${aws_instance.master.private_ip} "sudo cat /var/lib/rancher/k3s/server/node-token") sh -'
   EOF
 
 
