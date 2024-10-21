@@ -4,9 +4,9 @@ on:
   push:
     branches:
       - task_2
-  pull_request:
-    branches:
-      - task_2
+  # pull_request:
+  #   branches:
+  #     - task_2
 
 
 permissions:
@@ -82,7 +82,7 @@ jobs:
       run: terraform plan -input=false
       working-directory: task-2/vpc
 
-      
+
   terraform-apply:
     name: 'Terraform apply'
     runs-on: ubuntu-latest
