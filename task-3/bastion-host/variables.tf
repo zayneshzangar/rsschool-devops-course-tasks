@@ -30,7 +30,3 @@ variable "vpc_azs" {
   type        = string
   default     = "ap-southeast-1a"
 }
-
-# variable "rsschool_key" {
-#   type = string
-# }
