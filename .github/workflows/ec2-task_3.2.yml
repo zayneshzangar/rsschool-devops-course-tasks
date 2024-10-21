@@ -32,7 +32,7 @@ jobs:
       uses: actions/cache@v3
       with:
         path: task-3/ec2
-        key: ${{ runner.os }}-ec2-${{ hashFiles('task-3/ec2/**') }}
+        key: ${{ runner.os }}-ec2-2-${{ hashFiles('task-3/ec2/**') }}
         restore-keys: |
           ${{ runner.os }}-ec2-
 
@@ -64,7 +64,7 @@ jobs:
       uses: actions/cache@v3
       with:
         path: task-3/ec2
-        key: ${{ runner.os }}-ec2-${{ hashFiles('task-3/ec2/**') }}
+        key: ${{ runner.os }}-ec2-2-${{ hashFiles('task-3/ec2/**') }}
         restore-keys: |
           ${{ runner.os }}-ec2-
 
@@ -95,7 +95,7 @@ jobs:
       uses: actions/cache@v3
       with:
         path: task-3/ec2
-        key: ${{ runner.os }}-ec2-${{ hashFiles('task-3/ec2/**') }}
+        key: ${{ runner.os }}-ec2-2-${{ hashFiles('task-3/ec2/**') }}
         restore-keys: |
           ${{ runner.os }}-ec2-
 
