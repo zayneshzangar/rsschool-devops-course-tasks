@@ -14,7 +14,6 @@ permissions:
 
 env:
     AWS_ACC_ID: ${{ secrets.AWS_ACC_ID }}
-    AWS_KEY_PAIR: ${{ secrets.AWS_KEY_PAIR }}
 
 
 jobs:

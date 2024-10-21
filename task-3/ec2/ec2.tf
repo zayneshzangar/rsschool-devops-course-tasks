@@ -16,7 +16,7 @@ resource "aws_instance" "master" {
         # echo "test" >> /home/ubuntu/.ssh/rsschool-key.pem
 
         # Устанавливаем правильные права на ключ
-        chmod 400 /home/ubuntu/.ssh/rsschool-key.pem
+        # chmod 400 /home/ubuntu/.ssh/rsschool-key.pem
 
         # Установка K3s с параметрами
         curl -sfL https://get.k3s.io | K3S_TOKEN=MyToken12345 sh -s - --write-kubeconfig-mode 644 --tls-san ${data.terraform_remote_state.eip_state.outputs.eip_for_master}
