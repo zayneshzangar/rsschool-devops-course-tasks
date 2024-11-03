@@ -3,7 +3,7 @@
 node_name=$(kubectl get nodes  --no-headers| grep -v master |awk '{print $1}')
 kubectl label node $node_name worker=apps
 
-kubectl create ns jenkins
+kubectl create ns jenkins || true
 
 kubectl apply -f jenkins-volume.yaml
 
