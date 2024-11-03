@@ -1,10 +1,9 @@
-name: 'key-pair'
+name: 'eip'
 
 on:
     push:
         branches:
-            - task_2
-
+            - task_3.1
 
 permissions:
   id-token: write
@@ -29,10 +28,10 @@ jobs:
     - name: Cache Terraform Directory 2
       uses: actions/cache@v3
       with:
-        path: task-2/key-pair
-        key: ${{ runner.os }}-kp2-${{ hashFiles('task-2/key-pair/**') }}
+        path: task-3/eip
+        key: ${{ runner.os }}-eip-${{ hashFiles('task-3/eip/**') }}
         restore-keys: |
-          ${{ runner.os }}-kp2-
+          ${{ runner.os }}-eip-
 
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v4
@@ -42,11 +41,11 @@ jobs:
 
     - name: Terraform Init
       run: terraform init
-      working-directory: task-2/key-pair
+      working-directory: task-3/eip
 
     - name: Terraform Format
       run: terraform fmt
-      working-directory: task-2/key-pair
+      working-directory: task-3/eip
 
 
   terraform-kp-plan:
@@ -61,10 +60,10 @@ jobs:
     - name: Cache Terraform Directory 2
       uses: actions/cache@v3
       with:
-        path: task-2/key-pair
-        key: ${{ runner.os }}-kp2-${{ hashFiles('task-2/key-pair/**') }}
+        path: task-3/eip
+        key: ${{ runner.os }}-eip-${{ hashFiles('task-3/eip/**') }}
         restore-keys: |
-          ${{ runner.os }}-kp2-
+          ${{ runner.os }}-eip-
 
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v4
@@ -74,11 +73,11 @@ jobs:
 
     - name: Terraform Init
       run: terraform init
-      working-directory: task-2/key-pair
+      working-directory: task-3/eip
 
     - name: Terraform Planning
       run: terraform plan -input=false
-      working-directory: task-2/key-pair
+      working-directory: task-3/eip
 
   terraform-kp-apply:
     name: 'Terraform apply'
@@ -92,10 +91,10 @@ jobs:
     - name: Cache Terraform Directory 2
       uses: actions/cache@v3
       with:
-        path: task-2/key-pair
-        key: ${{ runner.os }}-kp2-${{ hashFiles('task-2/key-pair/**') }}
+        path: task-3/eip
+        key: ${{ runner.os }}-eip-${{ hashFiles('task-3/eip/**') }}
         restore-keys: |
-          ${{ runner.os }}-kp2-
+          ${{ runner.os }}-eip-
 
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v4
@@ -105,4 +104,4 @@ jobs:
 
     - name: Terraform Apply
       run: terraform apply -auto-approve -input=false
-      working-directory: task-2/key-pair
+      working-directory: task-3/eip
