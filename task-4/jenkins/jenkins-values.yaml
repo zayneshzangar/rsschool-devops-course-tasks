@@ -269,7 +269,7 @@ controller:
 
     livenessProbe:
       # -- Set the failure threshold for the liveness probe
-      failureThreshold: 5
+      failureThreshold: 20
       httpGet:
         # -- Set the Pod's HTTP path for the liveness probe
         path: '/login'
@@ -287,7 +287,7 @@ controller:
 
     readinessProbe:
       # -- Set the failure threshold for the readiness probe
-      failureThreshold: 3
+      failureThreshold: 20
       httpGet:
         # -- Set the Pod's HTTP path for the liveness probe
         path: '/login'
