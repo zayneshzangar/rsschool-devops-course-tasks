@@ -18,7 +18,7 @@ variable "ami_id" {
 variable "ami_type" {
   description = "AMI Amazon Linux type"
   type        = string
-  default     = "t2.small"
+  default     = "t3.medium"
 }
 
 variable "vpc_azs" {

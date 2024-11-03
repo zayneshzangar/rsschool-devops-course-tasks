@@ -6,8 +6,14 @@ resource "aws_instance" "master" {
   key_name               = "key-pair-rsschool"
   availability_zone      = var.vpc_azs[0]
 
+  # Назначение размера корневого накопителя
+  root_block_device {
+    volume_size = 40  # Размер в гигабайтах (GB)
+    volume_type = "gp2"  # Тип накопителя: gp2, gp3, io1 и т.д.
+  }
+
   # Установка K3s
-    user_data = <<-EOF
+  user_data = <<-EOF
         #!/bin/bash
 
         # echo "test"
@@ -37,6 +43,12 @@ resource "aws_instance" "worker" {
   key_name               = "key-pair-rsschool"
   availability_zone      = var.vpc_azs[1]
   depends_on             = [aws_instance.master]
+
+  # Назначение размера корневого накопителя
+  root_block_device {
+    volume_size = 40  # Размер в гигабайтах (GB)
+    volume_type = "gp2"  # Тип накопителя: gp2, gp3, io1 и т.д.
+  }
 
   tags = {
     Name = "worker"

@@ -20,8 +20,15 @@ resource "aws_security_group" "ssh_k3s_sg" {
   }
 
   ingress {
-    from_port   = 6443 # SSH, если нужно подключение для управления
+    from_port   = 6443 
     to_port     = 6443
+    protocol    = "tcp"
+    cidr_blocks = var.vpc_cidr # Разрешение доступа только из VPC
+  }
+
+  ingress {
+    from_port   = 30080
+    to_port     = 30080
     protocol    = "tcp"
     cidr_blocks = var.vpc_cidr # Разрешение доступа только из VPC
   }

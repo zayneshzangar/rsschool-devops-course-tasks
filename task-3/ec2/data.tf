@@ -37,3 +37,12 @@ data "terraform_remote_state" "eip_state" {
     region = "ap-southeast-1"
   }
 }
+
+data "terraform_remote_state" "profile_role_pv" {
+  backend = "s3"
+  config = {
+    bucket = "s3-terraform-states-epam-rsschool-zayneshzangar"
+    key    = "global/role-pv/terraform.tfstate"
+    region = "ap-southeast-1"
+  }
+}

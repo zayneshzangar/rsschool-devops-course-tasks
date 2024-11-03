@@ -19,6 +19,14 @@ resource "aws_security_group" "bastion_sg_k3s" {
     description = "Allow k3s access from anywhere"
   }
 
+  ingress {
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"] # Разрешить доступ всем
+    description = "Allow k3s access from anywhere"
+  }
+
   egress {
     from_port   = 0
     to_port     = 0
