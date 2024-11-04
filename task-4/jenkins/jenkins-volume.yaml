@@ -21,16 +21,16 @@ metadata:
 provisioner: kubernetes.io/no-provisioner
 volumeBindingMode: WaitForFirstConsumer
 ---
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: jenkins
-  namespace: jenkins  # Укажите ваш namespace
-spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 20Gi  # Убедитесь, что размер соответствует размеру вашего PV
-  volumeName: jenkins-pv  # Укажите имя существующего PV
+# apiVersion: v1
+# kind: PersistentVolumeClaim
+# metadata:
+#   name: jenkins
+#   namespace: jenkins  # Укажите ваш namespace
+# spec:
+#   accessModes:
+#     - ReadWriteOnce
+#   resources:
+#     requests:
+#       storage: 20Gi  # Убедитесь, что размер соответствует размеру вашего PV
+#   volumeName: jenkins-pv  # Укажите имя существующего PV
 
