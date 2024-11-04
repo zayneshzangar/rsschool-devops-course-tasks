@@ -1,0 +1,49 @@
+name: 'jenkins-deployment'
+
+on:
+  push:
+    branches:
+      - task_4.1
+
+permissions:
+  id-token: write
+  contents: read
+
+env:
+  KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}  # Store Kubernetes config as a GitHub secret
+
+jobs:
+  helm-deploy:
+    name: 'Deploy Jenkins via Helm'
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Install kubectl
+      run: |
+        curl -LO "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl"
+        chmod +x ./kubectl
+        sudo mv ./kubectl /usr/local/bin/kubectl
+
+    - name: Configure kubeconfig
+      run: mkdir  $HOME/.kube/ && touch $HOME/.kube/config && echo "${{ env.KUBE_CONFIG }}" | base64 -d > $HOME/.kube/config && export KUBECONFIG=$HOME/.kube/config
+
+    - name: Install Helm
+      run: |
+        curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+
+    - name: Jenkins requirements
+      run: chmod +x jenkins-requirements.sh && source jenkins-requirements.sh
+      working-directory: task-4/jenkins
+
+    - name: Add Jenkins Helm Repo
+      run: helm repo add jenkinsci https://charts.jenkins.io && helm repo update
+
+    - name: Check Jenkins Helm Repo
+      run: helm search repo jenkinsci
+
+    - name: Deploy Jenkins
+      run: helm upgrade --install jenkins jenkinsci/jenkins -f jenkins-values.yaml -n jenkins --create-namespace
+      working-directory: task-4/jenkins
