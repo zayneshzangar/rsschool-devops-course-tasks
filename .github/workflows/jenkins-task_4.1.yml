@@ -45,5 +45,5 @@ jobs:
       run: helm search repo jenkinsci
 
     - name: Deploy Jenkins
-      run: helm upgrade --install jenkins jenkinsci/jenkins -f jenkins-values.yaml -n jenkins --create-namespace
+      run: helm upgrade --install jenkins -n jenkins -f jenkins-values.yaml jenkinsci/jenkins
       working-directory: task-4/jenkins
