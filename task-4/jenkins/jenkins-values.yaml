@@ -650,7 +650,8 @@ controller:
 
   # ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#nodeselector
   # -- Node labels for pod assignment
-  nodeSelector: {}
+  nodeSelector:
+    worker: apps
 
   # ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#taints-and-tolerations-beta-feature
   # -- Toleration labels for pod assignment
@@ -1255,7 +1256,7 @@ persistence:
   # -- Annotations for the PVC
   annotations: {}
   # -- Labels for the PVC
-  labels: {}
+  labels:
   # -- The PVC access mode
   accessMode: "ReadWriteOnce"
   # -- The size of the PVC
