@@ -73,4 +73,18 @@ Installing jenkins in the cluster:
 If you want to change something in the settings of the running jenkins, you should change the jenkins-values.yaml file and run the command:
     - cd task-4/jenkins
     - chart=jenkinsci/jenkins
-    - helm upgrade jenkins -n jenkins -f jenkins-values.yaml $chart
+    - helm upgrade --install jenkins -n jenkins -f jenkins-values.yaml $chart
+
+First, let's get bastion's external ip address to access jenkins
+![Resource map](./jenkins/screens/eip-bastion.png)
+
+After installation, we can link to port 80 bastion and we will see in the jenkins browser
+![Resource map](./jenkins/screens/login-page-jenkins.png)
+
+Let's create a user for jenkins
+![Resource map](./jenkins/screens/create-user-jenkins.png)
+
+We will also create a freestyle project and run it in the console
+![Resource map](./jenkins/screens/hello-world-console.png)
+
+
